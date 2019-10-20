@@ -1,0 +1,11 @@
+.todo-app {
+	max-width: 380px;
+	min-height: 100vh;
+	margin: 0 auto;
+	padding: 20px;
+	background: #2e828f1f;
+}
+
+.top-panel {
+	margin: 1rem 0;
+}
