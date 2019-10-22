@@ -13,20 +13,24 @@ export default class TodoListItem extends Component {
 		};
 		
 		this.toggleDone = () => {
-			this.setState({
-				done: !this.state.done
+			this.setState((state) => {
+				return {
+					done: !state.done
+				}
 			})
 		};
 		
 		this.toggleImportant = () => {
-			this.setState({
-				important: !this.state.important
+			this.setState((state) => {
+				return {
+					important: !state.important
+				}
 			})
 		};
 	}
 	
 	render() {
-		const { label } = this.props;
+		const { label, onDeleted } = this.props;
 		const { done, important } = this.state;
 		let classNames = 'todo-list-item';
 		
@@ -38,20 +42,15 @@ export default class TodoListItem extends Component {
 			classNames += ' important';
 		}
 		
-		const itemStyle = {
-			color: important ? 'green' : '#000',
-			fontWeight: important ? 'bold' : 'normal'
-		};
-		
 		return (
 			<div className = { classNames }>
-				<span style = { itemStyle }
-					  className = 'todo-list-item-label'
+				<span className = 'todo-list-item-label'
 					  onClick = { this.toggleImportant } >
 					{ label }
 				</span>
 				
-				<button className="btn btn-sm btn-outline-danger float-right btn-remove">
+				<button className="btn btn-sm btn-outline-danger float-right btn-remove"
+						onClick={ onDeleted }>
 					<i className="fa fa-trash-o"></i>
 				</button>
 				

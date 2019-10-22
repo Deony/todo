@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 
 import AppHeader from "../app-header/app-header";
 import TodoList from "../todo-list/todo-list";
@@ -8,26 +8,46 @@ import ItemStatusFilter from "../item-status-filter/item-status-filter";
 import './app.css'
 
 
-const App = () => {
-	const todoData = [
-		{ id: 1, label: 'Drink Coffee' },
-		{ id: 2, label: 'Drink Tea' },
-		{ id: 3, label: 'Drink Juice' }
-	];
+export default class App extends Component{
+	constructor() {
+		super();
+		
+		this.state = {
+			todoData: [
+				{ id: 1, label: 'Drink Coffee' },
+				{ id: 2, label: 'Drink Tea' },
+				{ id: 3, label: 'Drink Juice' }
+			]
+		}
+	}
 	
-	return (
-		<div className = 'todo-app'>
+	deleteItem = (id) => {
+		this.setState( ({todoData}) => {
+			const index = todoData.findIndex( (el) => el.id === id ); // return index of deleted element
+		
+			const newData = [...todoData.slice(0, index), ...todoData.slice(index + 1)];
 			
-			<AppHeader/>
-			
-			<div className="top-panel d-flex">
-				<SearchPanel/>
-				<ItemStatusFilter/>
+			return {
+				todoData: newData
+			}
+		})
+	};
+	
+	render() {
+		return (
+			<div className = 'todo-app'>
+				
+				<AppHeader/>
+				
+				<div className="top-panel d-flex">
+					<SearchPanel/>
+					<ItemStatusFilter/>
+				</div>
+				
+				<TodoList
+					todoData = {this.state.todoData}
+					onDeleted = { this.deleteItem } />
 			</div>
-			
-			<TodoList todoData = {todoData} />
-		</div>
-	)
+		)
+	}
 };
-
-export default App;

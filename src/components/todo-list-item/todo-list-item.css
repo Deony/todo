@@ -42,6 +42,11 @@
 	right: 0;
 }
 
+.todo-list-item.important .todo-list-item-label {
+	color: green;
+	font-weight: bold;
+}
+
 .todo-list-item .btn {
 	margin: 3px;
 }
