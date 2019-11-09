@@ -1,5 +1,5 @@
 .todo-app {
-	max-width: 380px;
+	max-width: fit-content;
 	min-height: 100vh;
 	margin: 0 auto;
 	padding: 20px;

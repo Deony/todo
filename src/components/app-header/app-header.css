@@ -1,0 +1,15 @@
+.app-header {
+	margin-bottom: 10px;
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-end;
+}
+
+.app-header h1 {
+	margin-bottom: 0;
+}
+
+.app-header div {
+	color:#777777;
+	font-weight: 500;
+}
