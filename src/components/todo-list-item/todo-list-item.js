@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 
 import './todo-list-item.css';
 
@@ -8,13 +8,9 @@ const TodoListItem = (props) => {
 
 	let classNames = 'todo-list-item';
 	
-	if(done) {
-		classNames += ' done';
-	}
+	if(done) classNames += ' done';
 
-	if(important) {
-		classNames += ' important';
-	}
+	if(important) classNames += ' important';
 	
 	return (
 		<div className = { classNames }>
